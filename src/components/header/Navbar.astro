@@ -1,0 +1,189 @@
+---
+import logo from "../../assets/utils/logo.png";
+import logo2 from "../../assets/utils/rb_logo_white.png";
+
+const pathname = Astro.url.pathname;
+
+const navLinks = [
+  { href: "/", label: "Главная" },
+  { href: "/partners", label: "Для спонсоров" },
+  { href: "/fund", label: "Фонд поддержки дзюдо" },
+  { href: "/news", label: "Новости" },
+  { href: "/about", label: "О нас" },
+];
+
+function isActive(href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
+---
+
+<header class="text-[#F8CB4C] h-[100px] z-50 bg-[#181d28] sticky top-0">
+  <div class="flex justify-center w-full h-full items-center">
+    <div
+      class="max-w-[1240px] w-full px-4 lg:px-0 flex justify-between items-center"
+    >
+      <div class="flex w-6/7 md:w-2/7 lg:w-3/7 gap-3 items-center">
+        <div
+          class="w-1/5 sm:w-1/7 md:w-1/3 lg:w-2/7 flex items-center justify-center"
+        >
+          <a href="/">
+            <img src={logo.src} class="w-[64px]" alt="Логотип 1" />
+          </a>
+        </div>
+        <div
+          class="w-4/5 sm:w-6/7 md:w-0/3 lg:w-5/7 hover:text-[#C58838] transition-colors text-transparent bg-clip-text bg-gradient-to-l from-[#F8CB4C] to-[#C58838] duration-300 font-medium text-xs sm:text-sm text-left block md:hidden lg:block"
+        >
+          <a href="/">
+            Представительство Федерации<br />Дзюдо Таджикистана в Москве
+          </a>
+        </div>
+        <!-- <div
+          class="w-5/5 sm:w-1/5 md:w-1/2 lg:w-2/7 flex gap-2 items-center justify-center"
+        >
+          <a href="https://www.new-fitness.ru/">
+            <img src={logo2.src} class="w-[160px]" alt="Логотип 2" />
+          </a>
+        </div> -->
+      </div>
+
+      <!-- Правая половина: навигация -->
+      <nav
+        class="w-1/7 md:w-5/7 lg:w-4/7 hidden md:flex flex-row gap-3 lg:gap-4 items-center justify-end text-sm"
+      >
+        {navLinks.map(({ href, label }) => (
+          <div class="group">
+            <a
+              href={href}
+              aria-current={isActive(href) ? "page" : undefined}
+              class="transition-colors duration-300 font-medium tracking-wide text-transparent bg-clip-text bg-gradient-to-l from-[#F8CB4C] to-[#C58838]"
+            >
+              {label}
+            </a>
+            <div
+              class={`h-0.5 bg-[#C58838] transition-transform origin-left duration-300 ${isActive(href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+            />
+          </div>
+        ))}
+      </nav>
+
+      <!-- Кнопка мобильного меню -->
+      <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="url(#navGradient)"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient
+              id="navGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#C58838"></stop>
+              <stop offset="100%" stop-color="#F8CB4C"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Мобильное меню -->
+  <div id="mobile-menu" class="fixed inset-0 z-40 hidden">
+    <div
+      class="fixed inset-0 bg-black transition-all duration-300 opacity-0"
+      id="mobile-menu-overlay"
+    >
+    </div>
+    <div
+      class="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-xl transform transition-transform duration-300 translate-x-full"
+    >
+      <div class="flex items-center justify-between p-4 border-b">
+        <img src={logo.src} class="w-[48px]" />
+        <button
+          id="close-menu-button"
+          class="p-2 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="p-4 flex flex-col space-y-4 uppercase">
+        {navLinks.map(({ href, label }) => (
+          <a
+            href={href}
+            aria-current={isActive(href) ? "page" : undefined}
+            class={`transition-colors duration-300 font-medium py-2 border-b border-gray-100 ${isActive(href) ? "text-[#C58838]" : "text-gray-800 hover:text-[#db545a]"}`}
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
+
+  <!-- Линия снизу -->
+  <div class="w-full h-[3px] bg-gradient-to-l from-[#F8CB4C] to-[#C58838]"></div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenuButton = document.getElementById("mobile-menu-button")!;
+    const closeMenuButton = document.getElementById("close-menu-button")!;
+    const mobileMenu = document.getElementById("mobile-menu")!;
+    const mobileMenuOverlay = document.getElementById("mobile-menu-overlay")!;
+    const mobileMenuPanel = mobileMenu.querySelector("div > div:last-child")!;
+
+    function openMenu() {
+      mobileMenu.classList.remove("hidden");
+      void mobileMenu.offsetWidth;
+      mobileMenuOverlay.classList.add("opacity-50");
+      mobileMenuPanel.classList.remove("translate-x-full");
+    }
+
+    function closeMenu() {
+      mobileMenuOverlay.classList.remove("opacity-50");
+      mobileMenuPanel.classList.add("translate-x-full");
+
+      setTimeout(() => {
+        mobileMenu.classList.add("hidden");
+      }, 300);
+    }
+
+    mobileMenuButton.addEventListener("click", openMenu);
+    closeMenuButton.addEventListener("click", closeMenu);
+    mobileMenuOverlay.addEventListener("click", closeMenu);
+
+    const navLinks = mobileMenu.querySelectorAll("nav a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+        closeMenu();
+      }
+    });
+  });
+</script>

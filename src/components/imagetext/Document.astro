@@ -1,0 +1,16 @@
+---
+const { image } = Astro.props;
+---
+
+<section class="flex justify-center py-10">
+  <div class="max-w-[1200px] w-full px-4 grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
+    <div
+      class="md:col-span-2 mx-auto w-[70%] md:w-full h-full p-[4px] bg-gradient-to-r from-red-700 to-[#7F170D] overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
+    >
+      <img src={image.src} alt="Приказ" class="w-full h-auto object-contain" />
+    </div>
+    <div class="md:col-span-3 w-full h-full flex flex-col justify-center items-center">
+      <slot />
+    </div>
+  </div>
+</section>

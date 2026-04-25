@@ -1,0 +1,141 @@
+<div
+  id="popupOverlay"
+  class="fixed flex inset-0 z-[999] items-center justify-center p-4 hidden popup-enter bg-black/70 backdrop-blur-sm"
+>
+  <div
+    id="popupContent"
+    class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full popup-content-enter overflow-hidden border border-white/10"
+  >
+    <button
+      id="closePopup"
+      class="absolute top-3 right-3 bg-gradient-to-r from-red-700 to-[#7F170D] rounded-full w-9 h-9 flex items-center justify-center text-white hover:opacity-90 transition-opacity z-10 shadow-lg"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    <slot />
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+    }
+  }
+  .popup-enter {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  .popup-exit {
+    animation: fadeOut 0.2s ease-in forwards;
+  }
+  .popup-content-enter {
+    animation: slideIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+  }
+  .popup-content-exit {
+    animation: slideOut 0.2s ease-in forwards;
+  }
+
+  @media (min-width: 640px) {
+    #popupContent {
+      max-width: 28rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const popupOverlay = document.getElementById("popupOverlay")!;
+    const popupContent = document.getElementById("popupContent")!;
+    const closePopup = document.getElementById("closePopup")!;
+    const laterButton = document.getElementById("laterButton")!;
+
+    function showPopup() {
+      popupOverlay.classList.remove("hidden", "popup-exit");
+      popupContent.classList.remove("popup-content-exit");
+      popupOverlay.classList.add("popup-enter");
+      popupContent.classList.add("popup-content-enter");
+      document.body.style.overflow = "hidden";
+    }
+
+    function hidePopup() {
+      popupOverlay.classList.remove("popup-enter");
+      popupContent.classList.remove("popup-content-enter");
+      popupOverlay.classList.add("popup-exit");
+      popupContent.classList.add("popup-content-exit");
+      document.body.style.overflow = "";
+
+      setTimeout(() => {
+        popupOverlay.classList.add("hidden");
+      }, 200);
+    }
+
+    if (!sessionStorage.getItem("popupDismissed") && !localStorage.getItem("popupShown")) {
+      setTimeout(showPopup, 2000);
+    }
+
+    closePopup.addEventListener("click", () => {
+      hidePopup();
+      localStorage.setItem("popupShown", "true");
+    });
+
+    laterButton.addEventListener("click", () => {
+      hidePopup();
+      sessionStorage.setItem("popupDismissed", "true");
+    });
+
+    popupOverlay.addEventListener("click", (e) => {
+      if (e.target === popupOverlay) {
+        hidePopup();
+        sessionStorage.setItem("popupDismissed", "true");
+      }
+    });
+
+    popupOverlay.addEventListener("animationend", (e) => {
+      if (e.animationName === "fadeOut") {
+        popupOverlay.classList.remove("popup-exit");
+      }
+    });
+
+    popupContent.addEventListener("animationend", (e) => {
+      if (e.animationName === "slideOut") {
+        popupContent.classList.remove("popup-content-exit");
+      }
+    });
+  });
+</script>

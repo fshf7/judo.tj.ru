@@ -1,0 +1,112 @@
+---
+import Hero from "../../components/header/Hero.astro";
+
+import background from "../../assets/sections/jumbotron/background.png";
+import tj from "../../assets/sections/jumbotron/pres-tj.jpg";
+import ru from "../../assets/sections/jumbotron/pres-ru.png";
+---
+
+<Hero background={background}>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div
+      class="bg-white shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-2 opacity-0 translate-y-10 animate-card-in"
+      style="animation-delay: 0.2s"
+    >
+      <div class="flex flex-col md:flex-row h-full">
+        <div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
+          <img
+            class="w-full h-full object-cover object-[15%_75%] transform scale-100 hover:scale-105 transition-transform duration-500 ease-out"
+            src={tj.src}
+            alt="President Emomali Rahmon"
+            loading="lazy"
+          />
+        </div>
+        <div class="w-full md:w-3/5 p-6 flex flex-col justify-center">
+          <blockquote
+            class="text-gray-800 text-sm italic mb-5 leading-relaxed opacity-0 animate-fade-in"
+            style="animation-delay: 0.5s"
+          >
+            "Спорт – это путь к здоровью нации, воспитанию молодёжи и укреплению международной дружбы."
+          </blockquote>
+          <div class="opacity-0 animate-fade-in" style="animation-delay: 0.6s">
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D] font-bold text-base">
+              Эмомали Рахмон
+            </h5>
+            <h6 class="text-gray-600 text-sm">Президент Республики Таджикистан</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-white shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-2 opacity-0 translate-y-10 animate-card-in"
+      style="animation-delay: 0.3s"
+    >
+      <div class="flex flex-col md:flex-row-reverse h-full">
+        <div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
+          <img
+            class="w-full h-full object-cover object-[60%_75%] transform scale-100 hover:scale-105 transition-transform duration-500 ease-out"
+            src={ru.src}
+            alt="President Vladimir Putin"
+            loading="lazy"
+          />
+        </div>
+        <div class="w-full md:w-3/5 p-6 flex flex-col justify-center">
+          <blockquote
+            class="text-gray-800 text-sm text-right italic mb-5 leading-relaxed opacity-0 animate-fade-in"
+            style="animation-delay: 0.6s"
+          >
+            "Дзюдо — это не просто спорт. Это философия, которая учит уважению к сопернику, дисциплине и силе духа."
+          </blockquote>
+          <div class="opacity-0 animate-fade-in text-right" style="animation-delay: 0.7s">
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D] font-bold text-base">
+              Владимир Путин
+            </h5>
+            <h6 class="text-gray-600 text-sm">Президент Российской Федерации</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes parallax {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.1);
+      }
+    }
+
+    .animate-card-in {
+      animation: cardIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .hover-scale:hover img {
+      transform: scale(1.05);
+    }
+  </style>
+</Hero>

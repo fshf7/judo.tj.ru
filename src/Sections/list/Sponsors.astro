@@ -1,0 +1,26 @@
+---
+import rusmostrans from "../../assets/sections/partners/rusmostrans.png";
+import firuz from "../../assets/sections/partners/firuz.png";
+import rentacom from "../../assets/sections/partners/rentacom.png";
+import center_of_martial_arts from "../../assets/sections/partners/center_of_martial_arts.png";
+import point from "../../assets/sections/partners/point.png";
+import LoopingIcons from "../../components/list/LoopingIcons.astro";
+
+const sponsors = [
+  {
+    src: rusmostrans.src,
+    alt: "Rusmostrans",
+    href: "http://www.rusmostrans.ru/",
+  },
+  { src: firuz.src, alt: "Firuz", href: "https://firuz.ru/" },
+  { src: rentacom.src, alt: "Rentacom", href: "https://rentakom-f.ru/" },
+  {
+    src: center_of_martial_arts.src,
+    alt: "Partner",
+    href: "https://www.new-fitness.ru/fight",
+  },
+  { src: point.src, alt: "Slice Point", href: "https://slicepoint.ru/" },
+];
+---
+
+<LoopingIcons icons={sponsors} />

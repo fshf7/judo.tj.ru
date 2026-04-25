@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Hero from "../Sections/hero/Home.astro";
+import Documents from "../Sections/document/Documents.astro";
+import Celebrities from "../Sections/Celebrities.astro";
+
+import Person from "../components/imagetext/Person.astro";
+
+//
+
+import Fund from "../Sections/Fund2.astro";
+import Contacts from "../Sections/Contacts.astro";
+import Partner from "../Sections/Partner.astro";
+
+import fed from "../assets/fed.png";
+import fed2 from "../assets/fed2.png";
+import im_logo from "../assets/utils/im_group.png";
+import rb_logo from "../assets/utils/rb_logo.png";
+import im_bg from "../assets/person_im_bg.png";
+import rb_bg from "../assets/person_rb_bg.png";
+---
+
+<Layout>
+  <main>
+    <Hero />
+    <Person
+      title="Президент Федерации Дзюдо Таджикистана"
+      name="Исмoил Махмадзоир"
+      description="Общественный деятель, активно продвигающий развитие массового спорта и здорового образа жизни среди молодёжи Таджикистана. Под его руководством Федерация дзюдо реализует программы, направленные на воспитание новых чемпионов, поддержку юных спортсменов и укрепление дружбы между народами через спорт."
+      image={fed}
+      logo={im_logo}
+      logoLink="http://imgroup.tj/"
+      background={im_bg}
+    />
+    <Person
+      title="Официальный Представитель Федерации Дзюдо в городе Москва"
+      name="Бокиев Расул Худайназарович"
+      description="Бронзовый призёр Олимпийских игр, мастер спорта международного класса и один из самых уважаемых представителей таджикского дзюдо. Сегодня он активно продвигает дзюдо среди молодёжи Таджикистана в Москве, организуя тренировки, турниры и культурные мероприятия."
+      image={fed2}
+      logo={rb_logo}
+      logoLink="https://new-fitness.ru/"
+      background={rb_bg}
+      inverseLayout="true"
+    />
+    <Documents />
+    <Celebrities />
+    <Fund />
+    <Partner />
+    <!-- <div class="py-12 md:py-20 lg:py-12">
+        <Sponsors />
+      </div> -->
+  </main>
+  <Contacts />
+</Layout>

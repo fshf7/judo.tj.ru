@@ -1,0 +1,329 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSimple from "../components/header/HeroSimple.astro";
+import Sponsors from "../Sections/list/Sponsors.astro";
+import IJF from "../Sections/IJF.astro";
+
+import aboutHero from "../assets/about/values.jpg";
+import teamPhoto from "../assets/about/team.jpg";
+import historyPhoto from "../assets/about/old.jpg";
+---
+
+<Layout>
+  <main>
+    <HeroSimple
+      background={aboutHero}
+      title="О Федерации"
+      description="Наша миссия — развитие дзюдо в России и поддержка спортсменов"
+    />
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D]"
+              >Федерация дзюдо России</span
+            >
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-red-700 to-[#7F170D] mx-auto mb-8"></div>
+          <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-8">
+            Мы — официальная организация, представляющая дзюдо в Российской Федерации. Наша федерация объединяет
+            спортсменов, тренеров и любителей этого боевого искусства по всей стране.
+          </p>
+          <p class="text-base sm:text-lg md:text-xl text-gray-600">
+            С 1991 года мы развиваем дзюдо на профессиональном и любительском уровне, организуем турниры, готовим
+            чемпионов и популяризируем этот вид спорта среди всех возрастных групп.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2">
+            <div class="relative group overflow-hidden rounded-2xl shadow-xl h-96">
+              <img
+                src={historyPhoto.src}
+                alt="История Федерации дзюдо"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              >
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-1/2">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D]">Наша история</span>
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+              Федерация дзюдо России была основана в 1991 году после распада Советского Союза. Мы сохранили лучшие
+              традиции советской школы дзюдо и продолжили развивать этот вид спорта в новых условиях.
+            </p>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start">
+                <div class="flex-shrink-0 bg-gradient-to-r from-red-100 to-[#F8CB4C]/20 rounded-full p-2 mr-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-users-icon lucide-users"
+                    ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"
+                    ></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"
+                    ></path></svg
+                  >
+                </div>
+                <p class="text-gray-700">1991 - Основание Федерации дзюдо России</p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 bg-gradient-to-r from-red-100 to-[#F8CB4C]/20 rounded-full p-2 mr-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-medal-icon lucide-medal"
+                    ><path
+                      d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15"
+                    ></path><path d="M11 12 5.12 2.2"></path><path d="m13 12 5.88-9.8"></path><path d="M8 7h8"
+                    ></path><circle cx="12" cy="17" r="5"></circle><path d="M12 18v-2h-.5"></path></svg
+                  >
+                </div>
+                <p class="text-gray-700">1996 - Первые олимпийские медали под флагом России</p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 bg-gradient-to-r from-red-100 to-[#F8CB4C]/20 rounded-full p-2 mr-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-trophy-icon lucide-trophy"
+                    ><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path
+                      d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
+                    ></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path
+                      d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg
+                  >
+                </div>
+                <p class="text-gray-700">2012 - Организация чемпионата Европы в России</p>
+              </li>
+            </ul>
+            <a
+              href="#"
+              class="inline-flex items-center text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D] font-medium hover:opacity-80 transition-opacity"
+            >
+              Узнать больше о нашей истории
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D]">Наши ценности</span>
+          </h2>
+          <p class="text-xl text-gray-600">Принципы, которые лежат в основе нашей работы</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-gray-50 p-8 rounded-xl">
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-red-100 to-[#F8CB4C]/20 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-shield-check-icon lucide-shield-check"
+                ><path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                ></path><path d="m9 12 2 2 4-4"></path></svg
+              >
+            </div>
+            <h3
+              class="text-xl font-semibold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D]"
+            >
+              Честность
+            </h3>
+            <p class="text-gray-600 text-center">
+              Мы придерживаемся принципов fair play и честной спортивной борьбы во всех аспектах нашей деятельности.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-8 rounded-xl">
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-red-100 to-[#F8CB4C]/20 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-scale-icon lucide-scale"
+                ><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path
+                  d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path
+                  d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg
+              >
+            </div>
+            <h3
+              class="text-xl font-semibold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D]"
+            >
+              Единство
+            </h3>
+            <p class="text-gray-600 text-center">
+              Мы объединяем всех любителей дзюдо, независимо от возраста, пола или уровня подготовки.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-8 rounded-xl">
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-red-100 to-[#F8CB4C]/20 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-up-from-line-icon lucide-arrow-up-from-line"
+                ><path d="m18 9-6-6-6 6"></path><path d="M12 3v14"></path><path d="M5 21h14"></path></svg
+              >
+            </div>
+            <h3
+              class="text-xl font-semibold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D]"
+            >
+              Развитие
+            </h3>
+            <p class="text-gray-600 text-center">
+              Мы постоянно работаем над улучшением условий для тренировок и роста спортсменов.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2 order-2 lg:order-1">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D]">Наша команда</span>
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+              В Федерации дзюдо России работает более 200 профессионалов по всей стране - тренеры, судьи, организаторы
+              мероприятий и административный персонал.
+            </p>
+            <p class="text-lg text-gray-600 mb-8">
+              Наш президент - заслуженный мастер спорта, многократный чемпион мира и Европы. Под его руководством
+              федерация достигла значительных успехов на международной арене.
+            </p>
+            <a
+              href="#"
+              class="inline-flex items-center justify-center bg-gradient-to-r from-red-700 to-[#7F170D] hover:opacity-90 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+            >
+              Познакомиться с командой
+            </a>
+          </div>
+          <div class="lg:w-1/2 order-1 lg:order-2">
+            <div class="relative group overflow-hidden rounded-2xl shadow-xl h-96">
+              <img
+                src={aboutHero.src}
+                alt="Команда Федерации дзюдо"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gradient-to-r from-red-700 to-[#7F170D] text-white">
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Наши достижения</h2>
+          <p class="text-xl opacity-90">За годы работы мы подготовили чемпионов и организовали сотни мероприятий</p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8 text-center">
+          <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+            <div class="text-3xl md:text-4xl font-bold mb-2">25+</div>
+            <div class="text-lg">Чемпионов мира</div>
+          </div>
+          <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+            <div class="text-3xl md:text-4xl font-bold mb-2">50+</div>
+            <div class="text-lg">Чемпионов Европы</div>
+          </div>
+          <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+            <div class="text-3xl md:text-4xl font-bold mb-2">100+</div>
+            <div class="text-lg">Международных турниров</div>
+          </div>
+          <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+            <div class="text-3xl md:text-4xl font-bold mb-2">5000+</div>
+            <div class="text-lg">Подготовленных спортсменов</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-[#7F170D]">Наши партнеры</span>
+          </h2>
+          <p class="text-xl text-gray-600">Организации, которые поддерживают развитие дзюдо в России</p>
+        </div>
+
+        <Sponsors />
+      </div>
+    </section>
+
+    <IJF />
+  </main>
+</Layout>

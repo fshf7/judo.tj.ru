@@ -1,0 +1,18 @@
+---
+import Hero from "./Hero.astro";
+
+const { background, backgroundClass, title, description } = Astro.props;
+---
+
+<Hero background={background} backgroundClass={backgroundClass} height="relative h-80 md:h-96 lg:h-[600px]">
+  <div class="absolute inset-0 bg-gradient-to-r from-black/40 to-black/10"></div>
+  <div class="absolute inset-0 flex items-center">
+    <div class="container mx-auto px-6 lg:px-8">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F8CB4C] to-[#C58838]">{title}</span>
+      </h1>
+      <p class="mt-8 text-lg md:text-2xl text-white/90 max-w-2xl">{description}</p>
+      <slot />
+    </div>
+  </div>
+</Hero>

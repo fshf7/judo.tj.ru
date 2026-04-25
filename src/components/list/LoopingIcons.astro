@@ -1,0 +1,107 @@
+---
+const { icons } = Astro.props;
+---
+
+<section class="relative overflow-hidden" id="partners">
+  <div class="mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center w-full">
+    <div class="w-full max-w-4xl mx-auto mb-12 md:mb-16 lg:mb-20 opacity-0 animate-fade-in">
+      <div class="h-1 bg-gradient-to-r from-transparent via-[#7F170D] to-transparent"></div>
+    </div>
+
+    <div class="max-w-7xl w-full px-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center justify-center">
+        {
+          icons.map((e: any, i: any) => (
+            <div class={`flex h-fit w-full justify-center opacity-0 animate-fade-in-delay-${(i + 1) * 100}`}>
+              <div class="p-4 rounded-xl bg-white hover:bg-gray-50 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                <a href={e.href}>
+                  <img
+                    decoding="async"
+                    class="h-16 w-full sm:h-20 object-contain transition-all duration-500"
+                    src={e.src}
+                    alt={e.alt}
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="w-full max-w-4xl mx-auto mt-12 md:mt-16 lg:mt-20 opacity-0 animate-fade-in-delay-600">
+      <div class="h-1 bg-gradient-to-r from-transparent via-[#7F170D] to-transparent"></div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .animate-fade-in-delay-100 {
+      animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+
+    .animate-fade-in-delay-200 {
+      animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+    }
+
+    .animate-fade-in-delay-300 {
+      animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+    }
+
+    .animate-fade-in-delay-400 {
+      animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    }
+
+    .animate-fade-in-delay-500 {
+      animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+    }
+
+    .animate-fade-in-delay-600 {
+      animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const animateElements = document.querySelectorAll(".opacity-0");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const delay = entry.target.classList.contains("animate-fade-in-delay-600")
+                ? "animate-fade-in-delay-600"
+                : `animate-fade-in-delay-${Array.from(animateElements).indexOf(entry.target) * 100})`;
+
+              entry.target.classList.add(delay);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+          rootMargin: "0px 0px -50px 0px",
+        }
+      );
+
+      animateElements.forEach((element) => {
+        observer.observe(element);
+      });
+    });
+  </script>
+</section>

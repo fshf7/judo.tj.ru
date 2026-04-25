@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+
+import Navbar from "../components/header/Navbar.astro";
+
+import NewsletterPopup from "../Sections/Popup/Newsletter.astro";
+
+import Fonts from "../partials/Fonts.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Fonts />
+    <title>Working</title>
+  </head>
+  <body>
+    <NewsletterPopup />
+    <Navbar />
+    <slot />
+    <!-- <Footer /> -->
+
+    <script>
+      const elements = document.querySelectorAll("section");
+      elements.forEach((el) => el.classList.add("fade-in"));
+
+      function checkFadeElements() {
+        const elements = document.querySelectorAll(".fade-in:not(.visible)");
+        const windowHeight = window.innerHeight;
+        const triggerPoint = windowHeight * 0.8;
+
+        elements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          if (elementTop < triggerPoint) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      window.addEventListener("load", checkFadeElements);
+      window.addEventListener("scroll", checkFadeElements);
+
+      checkFadeElements();
+    </script>
+  </body>
+</html>

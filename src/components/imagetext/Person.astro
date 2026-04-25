@@ -1,0 +1,270 @@
+---
+import im_logo from "../../assets/utils/im_group_logo.png";
+import { Image } from "astro:assets";
+
+import Facebook from "../../assets/icons/social/fb.svg";
+import Instagram from "../../assets/icons/social/ig.svg";
+import Vk from "../../assets/icons/social/vk.svg";
+
+const {
+  title,
+  name,
+  description,
+  image,
+  logo,
+  logoLink,
+  background,
+  inverseLayout = false,
+} = Astro.props;
+---
+
+<section
+  class="flex justify-center overflow-hidden bg-cover bg-center relative"
+  style={`background-image: url(${background.src})`}
+>
+  <div class="absolute inset-0 bg-black/70 z-0"></div>
+  <div class="relative z-10 max-w-[1240px] w-full px-4 py-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <div
+        class:list={[
+          "w-full order-2 opacity-0 animate-fade-up",
+          inverseLayout ? "sm:order-2" : "sm:order-1",
+          inverseLayout ? "sm:animate-fade-up-delay-100" : "sm:animate-fade-up",
+        ]}
+      >
+        <div
+          class:list={[
+            "flex h-full text-center flex-col justify-center items-center",
+            inverseLayout
+              ? "sm:items-start sm:text-start"
+              : "sm:items-end sm:text-end",
+          ]}
+        >
+          <div
+            class:list={[
+              "flex flex-col w-full justify-between items-center gap-4 opacity-0 animate-fade-in sm:animate-fade-in-delay-200",
+              inverseLayout ? "sm:flex-row-reverse" : "sm:flex-row",
+            ]}
+          >
+            <a href={logoLink} target="_blank" rel="noopener noreferrer">
+              <img
+                class="w-[60px] sm:w-[150px] aspect-square transform transition-transform duration-500 hover:scale-110"
+                src={logo.src}
+                loading="lazy"
+              />
+            </a>
+            <h2
+              class="text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-l from-[#F8CB4C] to-[#C58838] my-4"
+            >
+              {title}
+            </h2>
+          </div>
+
+          <h3
+            class="text-xl md:text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-l from-[#F8CB4C] to-[#C58838] my-4 sm:my-8 opacity-0 animate-fade-in"
+            class:list={[
+              inverseLayout
+                ? "sm:animate-fade-in-delay-300"
+                : "sm:animate-fade-in-delay-200",
+            ]}
+          >
+            {name}
+          </h3>
+
+          <div
+            class="w-full md:w-3/4 h-0.5 my-4 opacity-0 animate-scale-x bg-gradient-to-l from-[#F8CB4C] to-[#C58838]"
+            class:list={[
+              inverseLayout
+                ? "sm:animate-scale-x-delay-300"
+                : "sm:animate-scale-x-delay-200",
+            ]}
+          >
+          </div>
+
+          <p
+            class="text-gray-300 text-sm md:text-base my-4 opacity-0 animate-fade-in"
+            class:list={[
+              inverseLayout
+                ? "sm:animate-fade-in-delay-400"
+                : "sm:animate-fade-in-delay-300",
+            ]}
+          >
+            {description}
+          </p>
+
+          <div
+            class="w-full md:w-3/4 h-0.5 my-4 opacity-0 animate-scale-x bg-gradient-to-l from-[#F8CB4C] to-[#C58838]"
+            class:list={[
+              inverseLayout
+                ? "sm:animate-scale-x-delay-500"
+                : "sm:animate-scale-x-delay-400",
+            ]}
+          >
+          </div>
+
+          <!-- <div
+            class="flex justify-center md:justify-start space-x-4 my-4 opacity-0 animate-fade-in"
+            class:list={[inverseLayout ? "sm:animate-fade-in-delay-600" : "sm:animate-fade-in-delay-500"]}
+          >
+            <a
+              href="https://wp-site.local/?page_id=163"
+              target="_blank"
+              class="text-blue-600 transition-colors duration-300"
+            >
+              <Facebook />
+            </a>
+            <a
+              href="https://wp-site.local/?page_id=163"
+              target="_blank"
+              class="text-pink-600 transition-colors duration-300"
+            >
+              <Instagram />
+            </a>
+            <a
+              href="https://wp-site.local/?page_id=163"
+              target="_blank"
+              class="text-pink-600 transition-colors duration-300"
+            >
+              <Vk />
+            </a>
+          </div> -->
+        </div>
+      </div>
+
+      <div
+        class:list={[
+          "order-1 mx-10 mt-10 mb-2 sm:m-10 max-h-[618px] opacity-0 animate-fade-up animate-fade-up-delay-200 p-[4px] bg-gradient-to-r from-[#C58838] to-[#F8CB4C]",
+          inverseLayout ? "sm:order-1" : "sm:order-2",
+          "transform transition-transform duration-500 hover:scale-[1.02]",
+        ]}
+        style="box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);"
+      >
+        <img
+          src={image.src}
+          class="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scaleX {
+      from {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    .animate-fade-up {
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .animate-fade-up-delay-100 {
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .animate-fade-in-delay-100 {
+      animation: fadeIn 0.6s ease-out 0.1s forwards;
+    }
+
+    .animate-fade-in-delay-200 {
+      animation: fadeIn 0.6s ease-out 0.2s forwards;
+    }
+
+    .animate-fade-in-delay-300 {
+      animation: fadeIn 0.6s ease-out 0.3s forwards;
+    }
+
+    .animate-fade-in-delay-400 {
+      animation: fadeIn 0.6s ease-out 0.4s forwards;
+    }
+
+    .animate-fade-in-delay-500 {
+      animation: fadeIn 0.6s ease-out 0.5s forwards;
+    }
+
+    .animate-fade-in-delay-600 {
+      animation: fadeIn 0.6s ease-out 0.6s forwards;
+    }
+
+    .animate-scale-x {
+      animation: scaleX 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      transform-origin: left;
+    }
+
+    .animate-scale-x-delay-200 {
+      animation: scaleX 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
+      transform-origin: left;
+    }
+
+    .animate-scale-x-delay-300 {
+      animation: scaleX 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
+      transform-origin: left;
+    }
+
+    .animate-scale-x-delay-400 {
+      animation: scaleX 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.4s forwards;
+      transform-origin: left;
+    }
+
+    .animate-scale-x-delay-500 {
+      animation: scaleX 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.5s forwards;
+      transform-origin: left;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const animatedElements = document.querySelectorAll(".opacity-0");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              (entry.target as HTMLElement).style.animationPlayState =
+                "running";
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
+
+      animatedElements.forEach((element) => {
+        (element as HTMLElement).style.animationPlayState = "paused";
+        observer.observe(element);
+      });
+    });
+  </script>
+</section>

@@ -1,0 +1,19 @@
+---
+import Popup from "./Popup.astro";
+
+const { image } = Astro.props;
+---
+
+<Popup>
+  <div class="relative h-25 w-full">
+    <img src={image.src} alt="Федерация дзюдо России" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+    <div class="absolute bottom-4 left-4">
+      <div class="text-white font-bold text-xl drop-shadow-lg">Федерация дзюдо Таджикистана в России</div>
+      <div class="w-12 h-1 bg-gradient-to-r from-[#F8CB4C] to-[#C58838] mt-2"></div>
+    </div>
+  </div>
+  <div class="p-6">
+    <slot />
+  </div>
+</Popup>

@@ -1,0 +1,67 @@
+---
+const { background, backgroundClass = "object-top", height = "min-h-screen" } = Astro.props;
+---
+
+<section class:list={["relative flex items-center justify-center py-20 overflow-hidden", height]}>
+  <div class="absolute inset-0 -z-10">
+    <img
+      class:list={[
+        "w-full h-full object-cover transform scale-100 lg:scale-110 transition-transform duration-1000 ease-out",
+        backgroundClass,
+      ]}
+      class=""
+      src={background.src}
+      alt=""
+      loading="lazy"
+      id="parallax-bg"
+    />
+    <div class="absolute inset-0 bg-black/30"></div>
+  </div>
+
+  <div class="container mx-auto px-4">
+    <slot />
+  </div>
+
+  <style>
+    @keyframes parallax {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const parallaxBg = document.getElementById("parallax-bg")!;
+
+      window.addEventListener("scroll", () => {
+        const scrollPosition = window.pageYOffset;
+        parallaxBg.style.transform = `scale(${1 + scrollPosition * 0.0005})`;
+      });
+
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll(".opacity-0");
+        const observer = new IntersectionObserver(
+          (es) => {
+            es.forEach((e) => {
+              if (e.isIntersecting) {
+                (e.target as HTMLElement).style.animationPlayState = "running";
+                observer.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        elements.forEach((e) => {
+          (e as HTMLElement).style.animationPlayState = "paused";
+          observer.observe(e);
+        });
+      };
+
+      animateOnScroll();
+    });
+  </script>
+</section>
