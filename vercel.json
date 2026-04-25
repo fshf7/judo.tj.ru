@@ -1,6 +1,3 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "astro",
-  "devCommand": "npm run dev"
+  "framework": "astro"
 }
